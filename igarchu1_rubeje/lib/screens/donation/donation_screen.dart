@@ -108,7 +108,7 @@ class _DonationScreenState extends State<DonationScreen>{
           return const Dialog(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
-                Radius.circular(8.0),
+                Radius.circular(10.0),
               ),
             ),
             child: DonationInputWidget(),
@@ -126,7 +126,7 @@ class _DonationScreenState extends State<DonationScreen>{
           return Dialog(
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
-                Radius.circular(16.0),
+                Radius.circular(10.0),
               ),
             ),
             child: DonationInputWidget(
