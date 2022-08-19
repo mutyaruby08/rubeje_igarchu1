@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../controllers/auth_controller.dart';
 import '../adoption/adoption_screen.dart';
+import '../donation/donation_screen.dart';
 
 
 class Wrapper extends StatelessWidget {
@@ -16,7 +17,8 @@ class Wrapper extends StatelessWidget {
           if (_authController.currentUser == null) {
             return AuthScreen(_authController);
           } else {
-            return AdoptionScreen(_authController);
+            // return AdoptionScreen(_authController);
+            return DonationScreen(_authController);
           }
         });
   }
