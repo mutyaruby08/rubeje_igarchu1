@@ -1,4 +1,4 @@
-// // ignore: camel_case_types
+
 // import 'package:flutter/material.dart';
 // import 'package:igarchu1_rubeje/screens/adoption/adoption_screen.dart';
 
@@ -6,19 +6,19 @@
 // import 'controllers/auth_controller.dart';
 
 // class OrgBottomNavBar extends StatefulWidget {
+  
 //   const OrgBottomNavBar({Key? key}) : super(key: key);
 
 //   @override
 //   State<OrgBottomNavBar> createState() => _OrgBottomNavBarState();
 // }
 
-// // ignore: camel_case_types
 // class _OrgBottomNavBarState extends State<OrgBottomNavBar> {
-//   final AuthController _authController = AuthController();
+ 
 //   int currentIndex = 2;
 //   final screens = [
-//     AdoptionScreen(_authController)
-//    //screens
+//     AdoptionScreen(),
+   
 //   ];
 
 //   @override
@@ -67,10 +67,10 @@
 //               Icons.person_outline_outlined,
 //             ),
 //           ),
-//           // BottomNavigationBarItem(
-//           //   label: 'Settings',
-//           //   icon: Icon(Icons.settings),
-//           // ),
+//           BottomNavigationBarItem(
+//             label: 'Settings',
+//             icon: Icon(Icons.settings),
+//           ),
 //         ],
 //       ),
 //     );

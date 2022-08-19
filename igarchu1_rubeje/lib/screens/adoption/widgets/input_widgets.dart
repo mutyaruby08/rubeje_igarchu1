@@ -61,15 +61,15 @@ class _InputWidgetState extends State<InputWidget> {
   @override
   void initState() {
     if (current != null) _tCon.text = current as String;
-    if (name != null) _tCon.text = name as String;
-    if (color != null) _tCon.text = color as String;
-    if (age != null) _tCon.text = age as String;
-    if (type != null) _tCon.text = type as String;
-    if (size != null) _tCon.text = size as String;
-    if (breed != null) _tCon.text = breed as String;
-    if (gender != null) _tCon.text = gender as String;
-    if (description != null) _tCon.text = description as String;
-    if (persona1 != null) _tCon.text = persona1 as String;
+    if (name != null) _nameCon.text = name as String;
+    if (color != null) _colorCon.text = color as String;
+    if (age != null) _ageCon.text = age as String;
+    if (type != null) _typeCon.text = type as String;
+    if (size != null) _sizeCon.text = size as String;
+    if (breed != null) _breedCon.text = breed as String;
+    if (gender != null) _genCon.text = gender as String;
+    if (description != null) _descrCon.text = description as String;
+    if (persona1 != null) _pers1Con.text = persona1 as String;
 
     super.initState();
   }
