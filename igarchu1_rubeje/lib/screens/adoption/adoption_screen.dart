@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-
 import '../../constants.dart';
 import '../../controllers/auth_controller.dart';
 import '../../controllers/pets_controller.dart';
 import 'adoption_model.dart';
 import 'widgets/adoption_card.dart';
 import 'widgets/input_widgets.dart';
-
 
 class AdoptionScreen extends StatefulWidget {
   final AuthController auth;
@@ -17,12 +15,10 @@ class AdoptionScreen extends StatefulWidget {
   State<AdoptionScreen> createState() => _AdoptionScreenState();
 }
 
-class _AdoptionScreenState extends State<AdoptionScreen>{
-
+class _AdoptionScreenState extends State<AdoptionScreen> {
   late final PetController _todoController;
   final ScrollController _sc = ScrollController();
   AuthController get _auth => widget.auth;
-
 
   @override
   void initState() {
@@ -33,7 +29,6 @@ class _AdoptionScreenState extends State<AdoptionScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         actions: [
           IconButton(
@@ -42,16 +37,16 @@ class _AdoptionScreenState extends State<AdoptionScreen>{
               },
               icon: const Icon(Icons.logout))
         ],
-        centerTitle:true,
-        title: const Text('Pet Adoption',
-          style: TextStyle(fontWeight: FontWeight.bold, ),
+        centerTitle: true,
+        title: const Text(
+          'Pet Adoption',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
         backgroundColor: kbutton2,
       ),
       floatingActionButton: FloatingActionButton(
-        shape:  const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-        ),
         backgroundColor: kbutton1,
         child: const Icon(Icons.add),
         onPressed: () {
@@ -78,13 +73,25 @@ class _AdoptionScreenState extends State<AdoptionScreen>{
                           children: [
                             for (Adoption todo in _todoController.data)
                               AdoptionCard(
+                                
                                 margin: const EdgeInsets.symmetric(vertical: 8),
                                 todo: todo,
                                 onErase: () {
                                   _todoController.removeTodo(todo);
                                 },
                                 onLongPress: () {
-                                  _todoController.updateTodo(todo, todo.adopteeID, todo.name, todo.color, todo.age, todo.type, todo.size, todo.breed, todo.gender, todo.description, todo.persona1);
+                                  _todoController.updateTodo(
+                                      todo,
+                                      todo.adopteeID,
+                                      todo.name,
+                                      todo.color,
+                                      todo.age,
+                                      todo.type,
+                                      todo.size,
+                                      todo.breed,
+                                      todo.gender,
+                                      todo.description,
+                                      todo.persona1);
                                   showEditDialog(context, todo);
                                 },
                               )
@@ -141,23 +148,22 @@ class _AdoptionScreenState extends State<AdoptionScreen>{
               gender: todo.gender,
               description: todo.description,
               persona1: todo.persona1,
-              
             ),
           );
         });
     if (result != null) {
-      _todoController.updateTodo(todo, 
-      result.adopteeID, 
-      result.name, 
-      result.color, 
-      result.age,
-      result.type,
-      result.size,
-      result.breed, 
-      result.gender, 
-      result.description,
-      result.persona1);
-
+      _todoController.updateTodo(
+          todo,
+          result.adopteeID,
+          result.name,
+          result.color,
+          result.age,
+          result.type,
+          result.size,
+          result.breed,
+          result.gender,
+          result.description,
+          result.persona1);
     }
   }
 }

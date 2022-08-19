@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../constants.dart';
 import '../adoption_model.dart';
 
 class AdoptionCard extends StatelessWidget {
@@ -25,7 +26,7 @@ class AdoptionCard extends StatelessWidget {
       child: GestureDetector(
         onLongPress: onLongPress,
         child: AspectRatio(
-          aspectRatio: 11 / 5,
+          aspectRatio: 5 / 5,
           child: Container(
             padding: const EdgeInsets.fromLTRB(16, 0, 0, 8),
             decoration: BoxDecoration(
@@ -48,11 +49,25 @@ class AdoptionCard extends StatelessWidget {
                     InkWell(
                       child: Row(
                         children: const [
-                          Icon(CupertinoIcons.doc),
-                          SizedBox(width: 10),
-                          Text('Adoption Form'),
+                          SizedBox(width: 7),
+                          Text(
+                            'Pet Information',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
                         ],
                       ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: kBackground2,
+                          ),
+                          onPressed: onLongPress,
+                          child: Text('Edit Pet Information',
+                              style: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.bold))),
                     ),
                     IconButton(
                       padding: EdgeInsets.zero,
@@ -61,6 +76,21 @@ class AdoptionCard extends StatelessWidget {
                       onPressed: onErase,
                     ),
                   ],
+                ),
+                Container(
+                  height: 250,
+                  width: 425,
+                  child: Card(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    // child: Image.network(pets.imageUrl, fit: BoxFit.cover),
+                    child: Image.network('assets/images/Brody.jpg',
+                        fit: BoxFit.cover),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    elevation: 5,
+                    margin: EdgeInsets.all(10),
+                  ),
                 ),
                 Expanded(
                   child: SingleChildScrollView(

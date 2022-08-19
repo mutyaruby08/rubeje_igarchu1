@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-
 import '../../../constants.dart';
 import '../adoption_model.dart';
 
@@ -16,10 +15,20 @@ class InputWidget extends StatefulWidget {
   final String? breed;
   final String? gender;
   final String? description;
-  final  String? persona1;
+  final String? persona1;
 
   const InputWidget(
-      {Key? key, this.name, this.adoptID, this.age, this.breed, this.gender, this.color, this.type, this.size, this.description, this.persona1})
+      {Key? key,
+      this.name,
+      this.adoptID,
+      this.age,
+      this.breed,
+      this.gender,
+      this.color,
+      this.type,
+      this.size,
+      this.description,
+      this.persona1})
       : super(key: key);
 
   @override
@@ -81,8 +90,15 @@ class _InputWidgetState extends State<InputWidget> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text('ADOPTEE FORM',
-              style: const TextStyle(fontWeight: FontWeight.bold),),
+              Text(
+                'ADOPTEE FORM',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Divider(
+                color: Colors.black,
+                thickness: 2,
+              ),
+              SizedBox(height: 5),
               Text(
                 current != null ? 'Adopt ID' : 'Adopt ID',
                 style: const TextStyle(fontWeight: FontWeight.bold),
@@ -97,7 +113,7 @@ class _InputWidgetState extends State<InputWidget> {
                 },
               ),
               const SizedBox(
-                height: 8,
+                height: 10,
               ),
               Text(
                 name != null ? 'Name' : 'Name',
@@ -113,7 +129,7 @@ class _InputWidgetState extends State<InputWidget> {
                 },
               ),
               const SizedBox(
-                height: 8,
+                height: 10,
               ),
               Text(
                 current != null ? 'Color' : 'Color',
@@ -129,7 +145,7 @@ class _InputWidgetState extends State<InputWidget> {
                 },
               ),
               const SizedBox(
-                height: 8,
+                height: 10,
               ),
               Text(
                 age != null ? 'Age' : 'Age',
@@ -145,7 +161,7 @@ class _InputWidgetState extends State<InputWidget> {
                 },
               ),
               const SizedBox(
-                height: 8,
+                height: 10,
               ),
               Text(
                 current != null ? 'Type' : 'Type',
@@ -161,7 +177,7 @@ class _InputWidgetState extends State<InputWidget> {
                 },
               ),
               const SizedBox(
-                height: 8,
+                height: 10,
               ),
               Text(
                 current != null ? 'Size' : 'Size',
@@ -177,9 +193,8 @@ class _InputWidgetState extends State<InputWidget> {
                 },
               ),
               const SizedBox(
-                height: 8,
+                height: 10,
               ),
-
               Text(
                 gender != null ? 'Gender' : 'Gender',
                 style: const TextStyle(fontWeight: FontWeight.bold),
@@ -194,7 +209,7 @@ class _InputWidgetState extends State<InputWidget> {
                 },
               ),
               const SizedBox(
-                height: 8,
+                height: 10,
               ),
               Text(
                 breed != null ? 'Breed' : 'Breed',
@@ -209,6 +224,9 @@ class _InputWidgetState extends State<InputWidget> {
                   return null;
                 },
               ),
+              const SizedBox(
+                height: 10,
+              ),
               Text(
                 current != null ? 'Description' : 'Description',
                 style: const TextStyle(fontWeight: FontWeight.bold),
@@ -221,6 +239,9 @@ class _InputWidgetState extends State<InputWidget> {
                   }
                   return null;
                 },
+              ),
+              const SizedBox(
+                height: 10,
               ),
               Text(
                 current != null ? 'Personality' : 'Personality',
@@ -249,17 +270,16 @@ class _InputWidgetState extends State<InputWidget> {
                     ? () {
                         if (_formKey.currentState?.validate() ?? false) {
                           Navigator.of(context).pop(Adoption(
-                              adopteeID: _tCon.text,
-                              name: _nameCon.text,
-                              color: _colorCon.text,
-                              age: _ageCon.text,
-                              type: _typeCon.text,
-                              size: _sizeCon.text,
-                              breed: _breedCon.text,
-                              gender: _genCon.text,
-                              description: _descrCon.text,
-                              persona1: _pers1Con.text,
-
+                            adopteeID: _tCon.text,
+                            name: _nameCon.text,
+                            color: _colorCon.text,
+                            age: _ageCon.text,
+                            type: _typeCon.text,
+                            size: _sizeCon.text,
+                            breed: _breedCon.text,
+                            gender: _genCon.text,
+                            description: _descrCon.text,
+                            persona1: _pers1Con.text,
                           ));
                         }
                       }
