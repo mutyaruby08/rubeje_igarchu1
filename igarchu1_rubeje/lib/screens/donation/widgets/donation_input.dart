@@ -37,11 +37,11 @@ class _DonationInputWidgetState extends State<DonationInputWidget> {
   @override
   void initState() {
     if (current != null) _tCon.text = current as String;
-    if (orgName != null) _tCon.text = orgName as String;
-    if (description != null) _tCon.text = description as String;
-    if (days != null) _tCon.text = days as String;
-    if (location != null) _tCon.text = location as String;
-    if (targetAmount != null) _tCon.text = targetAmount as String;
+    if (orgName != null) _orgNameCon.text = orgName as String;
+    if (description != null) _descriptCon.text = description as String;
+    if (days != null) _daysCon.text = days as String;
+    if (location != null) _locateCon.text = location as String;
+    if (targetAmount != null) _targetCon.text = targetAmount as String;
 
     super.initState();
   }
@@ -188,7 +188,7 @@ class _DonationInputWidgetState extends State<DonationInputWidget> {
                       borderRadius: BorderRadius.circular(16.0),
                     ),
                     primary: (_formKey.currentState?.validate() ?? false)
-                        ? kPrimaryColor
+                        ? kbutton1
                         : Colors.grey),
                 child: Text(current != null ? 'Edit' : 'Add'),
               )
