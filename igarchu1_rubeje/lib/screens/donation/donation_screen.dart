@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -16,12 +15,12 @@ class DonationScreen extends StatefulWidget {
   State<DonationScreen> createState() => _DonationScreenState();
 }
 
-class _DonationScreenState extends State<DonationScreen>{
-
+class _DonationScreenState extends State<DonationScreen> {
   late final DonationController _todoController;
   final ScrollController _sc = ScrollController();
   AuthController get _auth => widget.auth;
-
+  int currentIndex = 1;
+  final screens = [];
 
   @override
   void initState() {
@@ -32,7 +31,6 @@ class _DonationScreenState extends State<DonationScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         actions: [
           IconButton(
@@ -41,14 +39,17 @@ class _DonationScreenState extends State<DonationScreen>{
               },
               icon: const Icon(Icons.logout))
         ],
-        centerTitle:true,
-        title: const Text('Pet Donation',
-          style: TextStyle(fontWeight: FontWeight.bold, ),
+        centerTitle: true,
+        title: const Text(
+          'Pet Donation',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
         backgroundColor: kbutton2,
       ),
       floatingActionButton: FloatingActionButton(
-        shape:  const RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(5.0)),
         ),
         backgroundColor: kbutton1,
@@ -77,13 +78,21 @@ class _DonationScreenState extends State<DonationScreen>{
                           children: [
                             for (Donation todo in _todoController.data)
                               DonationCard(
-                                margin: const EdgeInsets.symmetric(vertical: 10),
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 10),
                                 todo: todo,
                                 onErase: () {
                                   _todoController.removeTodo(todo);
                                 },
                                 onLongPress: () {
-                                  _todoController.updateTodo(todo, todo.donationID, todo.orgName, todo.description, todo.days, todo.location, todo.targetAmount);
+                                  _todoController.updateTodo(
+                                      todo,
+                                      todo.donationID,
+                                      todo.orgName,
+                                      todo.description,
+                                      todo.days,
+                                      todo.location,
+                                      todo.targetAmount);
                                   showEditDialog(context, todo);
                                 },
                               )
@@ -97,6 +106,51 @@ class _DonationScreenState extends State<DonationScreen>{
             );
           },
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        type: BottomNavigationBarType.fixed,
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: kbutton1,
+        backgroundColor: Colors.white,
+        iconSize: 30,
+        onTap: (index) => setState(() {
+          currentIndex = index;
+        }),
+        items: const [
+          BottomNavigationBarItem(
+            label: 'Health',
+            icon: Icon(
+              Icons.monitor_heart_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Donate',
+            icon: Icon(
+              Icons.volunteer_activism_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Explore',
+            icon: Icon(Icons.search_outlined),
+          ),
+          BottomNavigationBarItem(
+            label: 'Chat',
+            icon: Icon(
+              Icons.chat_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Profile',
+            icon: Icon(
+              Icons.person_outline_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Settings',
+            icon: Icon(Icons.settings),
+          ),
+        ],
       ),
     );
   }
@@ -136,20 +190,19 @@ class _DonationScreenState extends State<DonationScreen>{
               days: todo.days,
               location: todo.location,
               targetAmount: todo.targetAmount,
-              
             ),
           );
         });
     if (result != null) {
-      _todoController.updateTodo(todo, 
-      result.donationID, 
-      result.orgName, 
-      result.description,
-      result.days,
-      result.location,
-      result.targetAmount,
+      _todoController.updateTodo(
+        todo,
+        result.donationID,
+        result.orgName,
+        result.description,
+        result.days,
+        result.location,
+        result.targetAmount,
       );
-
     }
   }
 }

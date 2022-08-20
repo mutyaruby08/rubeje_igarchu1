@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-
 import '../../controllers/auth_controller.dart';
 import '../adoption/adoption_screen.dart';
 import '../donation/donation_screen.dart';
-
 
 class Wrapper extends StatelessWidget {
   Wrapper({Key? key}) : super(key: key);
@@ -17,8 +15,8 @@ class Wrapper extends StatelessWidget {
           if (_authController.currentUser == null) {
             return AuthScreen(_authController);
           } else {
-            // return AdoptionScreen(_authController);
-            return DonationScreen(_authController);
+            return AdoptionScreen(_authController);
+            // return DonationScreen(_authController);
           }
         });
   }
@@ -27,9 +25,9 @@ class Wrapper extends StatelessWidget {
 class AuthScreen extends StatefulWidget {
   final AuthController auth;
   const AuthScreen(
-      this.auth, {
-        Key? key,
-      }) : super(key: key);
+    this.auth, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
@@ -53,7 +51,6 @@ class _AuthScreenState extends State<AuthScreen> {
           child: Center(
             child: SingleChildScrollView(
               child: Container(
-
                 padding: const EdgeInsets.all(16),
                 child: Form(
                   key: _formKey,
@@ -70,7 +67,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         children: <Widget>[
                           Container(
                             padding:
-                            const EdgeInsets.fromLTRB(16.0, 70.0, 0.0, 0.0),
+                                const EdgeInsets.fromLTRB(16.0, 70.0, 0.0, 0.0),
                             child: const Text('iGarchu',
                                 style: TextStyle(
                                     fontSize: 50.0,
@@ -85,7 +82,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             children: <Widget>[
                               TextFormField(
                                 decoration:
-                                const InputDecoration(hintText: 'Username'),
+                                    const InputDecoration(hintText: 'Username'),
                                 controller: _unCon,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -128,26 +125,26 @@ class _AuthScreenState extends State<AuthScreen> {
                                   borderRadius: BorderRadius.circular(15),
                                   // gradient: const LinearGradient(colors: [primaryColor, secondaryColor]),
                                   color:
-                                  _formKey.currentState?.validate() == true
-                                      ? primaryColor
-                                      : Colors.grey,
+                                      _formKey.currentState?.validate() == true
+                                          ? primaryColor
+                                          : Colors.grey,
                                   //gradient: (_formKey.currentState?.validate() ??  false) ?? LinearGradient(colors: [primaryColor, secondaryColor]) : Colors.grey,
                                 ),
                                 child: ElevatedButton(
                                     onPressed:
-                                    (_formKey.currentState?.validate() ??
-                                        false)
-                                        ? () {
-                                      bool result = _auth.login(
-                                          _unCon.text, _passCon.text);
-                                      if (!result) {
-                                        setState(() {
-                                          prompts =
-                                          'Error logging in, username or password may be incorrect or the user has not been registered yet.';
-                                        });
-                                      }
-                                    }
-                                        : null,
+                                        (_formKey.currentState?.validate() ??
+                                                false)
+                                            ? () {
+                                                bool result = _auth.login(
+                                                    _unCon.text, _passCon.text);
+                                                if (!result) {
+                                                  setState(() {
+                                                    prompts =
+                                                        'Error logging in, username or password may be incorrect or the user has not been registered yet.';
+                                                  });
+                                                }
+                                              }
+                                            : null,
                                     style: ButtonStyle(
                                         elevation: MaterialStateProperty.all(0),
                                         alignment: Alignment.center,
@@ -158,12 +155,12 @@ class _AuthScreenState extends State<AuthScreen> {
                                                 top: 15,
                                                 bottom: 15)),
                                         backgroundColor:
-                                        MaterialStateProperty.all(
-                                            Colors.transparent),
+                                            MaterialStateProperty.all(
+                                                Colors.transparent),
                                         shape: MaterialStateProperty.all(
                                           RoundedRectangleBorder(
                                               borderRadius:
-                                              BorderRadius.circular(15)),
+                                                  BorderRadius.circular(15)),
                                         )),
                                     child: const Text(
                                       'Log In',
@@ -176,22 +173,22 @@ class _AuthScreenState extends State<AuthScreen> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
                                   color:
-                                  _formKey.currentState?.validate() == true
-                                      ? primaryColor
-                                      : Colors.grey,
+                                      _formKey.currentState?.validate() == true
+                                          ? primaryColor
+                                          : Colors.grey,
                                 ),
                                 child: ElevatedButton(
                                     onPressed:
-                                    (_formKey.currentState?.validate() ??
-                                        false)
-                                        ? () {
-                                      String result = _auth.register(
-                                          _unCon.text, _passCon.text);
-                                      setState(() {
-                                        prompts = result;
-                                      });
-                                    }
-                                        : null,
+                                        (_formKey.currentState?.validate() ??
+                                                false)
+                                            ? () {
+                                                String result = _auth.register(
+                                                    _unCon.text, _passCon.text);
+                                                setState(() {
+                                                  prompts = result;
+                                                });
+                                              }
+                                            : null,
                                     style: ButtonStyle(
                                         elevation: MaterialStateProperty.all(0),
                                         alignment: Alignment.center,
@@ -202,12 +199,12 @@ class _AuthScreenState extends State<AuthScreen> {
                                                 top: 15,
                                                 bottom: 15)),
                                         backgroundColor:
-                                        MaterialStateProperty.all(
-                                            Colors.transparent),
+                                            MaterialStateProperty.all(
+                                                Colors.transparent),
                                         shape: MaterialStateProperty.all(
                                           RoundedRectangleBorder(
                                               borderRadius:
-                                              BorderRadius.circular(15)),
+                                                  BorderRadius.circular(15)),
                                         )),
                                     child: const Text(
                                       'Register',

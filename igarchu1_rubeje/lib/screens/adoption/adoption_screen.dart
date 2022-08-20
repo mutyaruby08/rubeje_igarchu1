@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:igarchu1_rubeje/orgBottom_navbar.dart';
 
 import '../../constants.dart';
 import '../../controllers/auth_controller.dart';
@@ -19,7 +20,8 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
   late final PetController _todoController;
   final ScrollController _sc = ScrollController();
   AuthController get _auth => widget.auth;
-
+  int currentIndex = 2;
+  final screens = [];
   @override
   void initState() {
     _todoController = PetController(_auth.currentUser!.username);
@@ -73,7 +75,6 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
                           children: [
                             for (Adoption todo in _todoController.data)
                               AdoptionCard(
-                                
                                 margin: const EdgeInsets.symmetric(vertical: 8),
                                 todo: todo,
                                 onErase: () {
@@ -105,6 +106,51 @@ class _AdoptionScreenState extends State<AdoptionScreen> {
             );
           },
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        type: BottomNavigationBarType.fixed,
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: kbutton1,
+        backgroundColor: Colors.white,
+        iconSize: 30,
+        onTap: (index) => setState(() {
+          currentIndex = index;
+        }),
+        items: const [
+          BottomNavigationBarItem(
+            label: 'Health',
+            icon: Icon(
+              Icons.monitor_heart_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Donate',
+            icon: Icon(
+              Icons.volunteer_activism_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Explore',
+            icon: Icon(Icons.search_outlined),
+          ),
+          BottomNavigationBarItem(
+            label: 'Chat',
+            icon: Icon(
+              Icons.chat_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Profile',
+            icon: Icon(
+              Icons.person_outline_outlined,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Settings',
+            icon: Icon(Icons.settings),
+          ),
+        ],
       ),
     );
   }
